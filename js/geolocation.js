@@ -15,10 +15,8 @@ geolocationClass.prototype.error = "";
 
 geolocationClass.prototype.create = function() {
 	
-	if ("geolocation" in navigator) {
-	
-		/* geolocation is available */
-		console.log("Geolocation is available");
+	// if ("geolocation" in navigator) {
+	if (navigator.geolocation) {
 
 		this.success = function(position) {
 			
@@ -44,12 +42,12 @@ geolocationClass.prototype.create = function() {
 		};
 
 		geolocationClass.prototype.location_id = navigator.geolocation.getCurrentPosition(this.success, this.failure, this.options);
+		
+		/*
+		navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+		can also be used if the position data changes (either by device movement or if more accurate geo information arrives)
+		*/
 	
-	} else {
-	
-		/* geolocation IS NOT available */
-		console.log("Geolocation is not available");
-
 	}
 
 }
